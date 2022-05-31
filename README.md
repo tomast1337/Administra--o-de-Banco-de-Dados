@@ -16,4 +16,4 @@
 - ### Cross Join: ×× junção cruzada
 - ### Natural Join: ×× junção natural
 
-
+![unknown (1)](https://user-images.githubusercontent.com/15125899/171237008-06f3fb3f-3a6c-43e2-b6e4-e5f20d9d909c.png)
