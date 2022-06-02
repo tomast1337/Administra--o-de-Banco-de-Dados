@@ -6,6 +6,7 @@
 - ### Projection: π ou Π seleção sem condição, remoção de colunas duplicatas
 - ### Rename: ρ renomeação de colunas
 - ### Join: ⨝ junção de tabelas
+- ### Divisão: ÷
 - ### Group: γ agrupamento
 - ### Order: δ ordenação
 - ### Limit: λ limitação
