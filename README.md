@@ -4,7 +4,8 @@
 
 - ### Seleção: 𝜎
 - ### Projeção: 𝜋
-- ### União: ⋃
+- ### União: ⋃ ou ∪
+- ### Interseção: ∩
 - ### Diferença de Conjuntos: −
 - ### Produto Cartesiano: ×
 - ### Junção: ⋈
