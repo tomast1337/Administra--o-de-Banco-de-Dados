@@ -13,3 +13,7 @@
 - ### Divisão: ÷
 - ### Renomeação: 𝜌
 
+```bash
+systemctl start mariadb.service
+```
+
