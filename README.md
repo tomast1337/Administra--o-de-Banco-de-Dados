@@ -16,6 +16,31 @@
 ```zsh-syntax-highlighting
 systemctl start mariadb.service
 ```
+# Informações sobre o mariadb
+https://wiki.archlinux.org/title/MariaDB
+
+
+para apagar tudo:
+```bash
+cd /var/lib/mysql
+ls
+rm -r *
+mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+systemctl start mysqld
+systemctl start mysql.service
+systemctl start mariadb
+mysql
+```
+https://serverfault.com/questions/812719/mysql-mariadb-not-starting
+
+Apos isso vai ser necessário criar os usuários e as senhas:
+```bash
+sudo mysql -u root -p
+CREATE USER 'usuario'@'localhost' IDENTIFIED BY 'senha';
+GRANT ALL PRIVILEGES ON *.* TO 'usuario'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+exit
+```
 
 <div style="
     display: flex;

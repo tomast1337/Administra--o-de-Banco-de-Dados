@@ -9,9 +9,22 @@
             "port": 3306,
             "askForPassword": true,
             "driver": "MariaDB",
+            "name": "SQL-Lista-2",
+            "database": "lista2",
+            "username": "local"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "askForPassword": true,
+            "driver": "MariaDB",
             "name": "local DB",
-            "database": "tests",
-            "username": "mysql"
+            "database": "lista2",
+            "username": "usuario"
         }
     ]
 }
