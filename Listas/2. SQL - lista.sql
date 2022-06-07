@@ -4,6 +4,7 @@ use `lista2`;
 
 -- 1. estude a script de criação das tabelas
 
+-- agencia (nome_agencia, cidade_agencia, ativo)
 create table if not exists agencia (
     id int not null,
     nome varchar(30),
@@ -227,7 +228,6 @@ from cliente, agencia, conta
 where cliente.cpf = conta.cpf_cliente
 and agencia.id = conta.id_agencia
 and cliente.cpf not in (select cpf_cliente from emprestimo); -- ERRADO ?
-
 
 
 -- 11. selecione o total das contas por agencia
