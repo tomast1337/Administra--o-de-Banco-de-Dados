@@ -408,7 +408,7 @@ from agencia
     join cliente on conta.cpf_cliente = cliente.cpf
 group by agencia.nome;
 -- ou errado
-from tablela.nome group_concat(tabela.nome, ',') as clientes (
+select tablela.nome group_concat(tabela.nome, ',') as clientes (
         select agencia.nome,
             cliente.nome
         from agencia
