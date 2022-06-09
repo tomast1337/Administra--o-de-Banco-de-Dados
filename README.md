@@ -4,6 +4,7 @@
 
 - ### Seleção: 𝜎
 - ### Projeção: 𝜋
+- ### Normalização, order by: 𝜏 
 - ### União: ⋃ ou ∪
 - ### Interseção: ∩
 - ### Diferença de Conjuntos: −

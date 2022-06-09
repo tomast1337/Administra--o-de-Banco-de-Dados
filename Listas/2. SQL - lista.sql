@@ -339,6 +339,17 @@ where cliente.cpf = conta.cpf_cliente
         select cpf_cliente
         from conta
     );
+-- ou
+select cliente.nome,
+    agencia.nome,
+    cliente.cidade
+from cliente
+    join conta on cliente.cpf = conta.cpf_cliente
+    join agencia on agencia.id = conta.id_agencia
+where cliente.cpf not in (
+        select cpf_cliente
+        from conta
+    );
 -- 11. selecione o total das contas por agencia
 select agencia.nome,
     count(conta.saldo) as total
