@@ -435,3 +435,127 @@ union
         right join cliente on conta.cpf_cliente = cliente.cpf
 ) as tabela
 group by tabela.nome;
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+drop database if exists `locadora`;
+create database if not exists `locadora`;
+use `locadora`;
+
+-- Locadora (CodLoc,NomeLoc, UF)
+create table `Locadora` (
+    `CodLoc` int not null auto_increment,
+    `NomeLoc` varchar(50) not null,
+    `UF` varchar(2) not null,
+    primary key (id)
+);
+
+-- Genero(CodGen, Nome)
+create table `Genero` (
+    `CodGen` int not null auto_increment,
+    `Nome` varchar(50) not null,
+    primary key (id)
+);
+-- Usuario (CodUsu,NomeUsu, CodLoc)
+create table `Usuario`(
+    `CodUsu` int not null auto_increment,
+    `NomeUsu` varchar(50) not null,
+    `CodLoc` int not null,
+    primary key (id),
+    foreign key (CodLoc) references Locadora(CodLoc)
+);
+
+-- Filme (CodFilme,Titulo,Ano, CodGen, CodLoc) 
+create table `Filme`(
+    `CodFilme` int not null auto_increment,
+    `Titulo` varchar(50) not null,
+    `Ano` int not null,
+    `CodGen` int not null,
+    `CodLoc` int not null,
+    primary key (id),
+    foreign key (CodGen) references Genero(CodGen),
+    foreign key (CodLoc) references Locadora(CodLoc)
+);
+
+-- Emprestimo (CodFilme,CodUsu,DataEmprestada, Vencimento, DataDevol)
+create table `Emprestimo`(
+    `CodFilme` int not null,
+    `CodUsu` int not null,
+    `DataEmprestada` date not null,
+    `Vencimento` date not null,
+    `DataDevol` date,
+    primary key (id),
+    foreign key (CodFilme) references Filme(CodFilme),
+    foreign key (CodUsu) references Usuario(CodUsu)
+);
+
+--- População Base de Dados
+
+
+
+-- 18. Obtenha as locadoras da UF = RJ
+
+select *
+from locadora
+where UF = 'RJ';
+
+-- 19. Obtenha os usuários da locadora ‘Divertida’. 
+
+select `NomeUsu`
+from usuario
+where CodLoc = (
+    select CodLoc
+    from locadora
+    where NomeLoc = 'Divertida'
+);
+
+-- 20.  obtenha  os  filmes assistidos pelo usuário ‘Cinéfilo’. 
+
+select `Titulo`
+from filme
+join emprestimo on filme.CodFilme = emprestimo.CodFilme
+join usuario on emprestimo.CodUsu = usuario.CodUsu
+where NomeUsu = 'Cinéfilo';
+
+-- 21.  apresente os filmes ainda não devolvidos pelo usuário ‘Cinéfilo’. 
+
+select `Titulo`
+from filme
+join emprestimo on filme.CodFilme = emprestimo.CodFilme
+join usuario on emprestimo.CodUsu = usuario.CodUsu
+where NomeUsu = 'Cinéfilo'
+and DataEmprestada is null; -- Errado
+
+-- 22. apresente os filmes devolvidos com atraso pelo usuário ‘Cinéfilo’. 
+
+select `Titulo`
+from filme
+join emprestimo on filme.CodFilme = emprestimo.CodFilme
+join usuario on emprestimo.CodUsu = usuario.CodUsu
+where NomeUsu = 'Cinéfilo'
+and DataDevol is not null
+
+-- 23. quantidade de vezes que o filme ‘Harry Potter e as Relíquias da Morte - Parte 2’ foi assistido. 
+
+select count(*) as `Quantidade de vezes que Harry Potter e as Relíquias da Morte - Parte 2 foi assistido`
+from filme
+join emprestimo on filme.CodFilme = emprestimo.CodFilme
+join usuario on emprestimo.CodUsu = usuario.CodUsu
+where Titulo = 'Harry Potter e as Relíquias da Morte - Parte 2';
+
+-- 24. apresente a quantidade filmes por gênero na locadora ‘Divertida’.
+
+select `Genero`.`Nome` as `Gênero`, count(*) as `Quantidade de filmes`
+from `Genero`
+join `Filme` on `Genero`.`CodGen` = `Filme`.`CodGen`
+join `Locadora` on `Filme`.`CodLoc` = `Locadora`.`CodLoc`
+where `Locadora`.`NomeLoc` = 'Divertida'
+group by `Genero`.`Nome`;
+
+-- 25.  filmes  disponíveis para empréstimo na locadora ‘Divertida’
+
+select `Titulo`
+from `Filme`
+join `Locadora` on `Filme`.`CodLoc` = `Locadora`.`CodLoc`
+where `Locadora`.`NomeLoc` = 'Divertida'
+join `Emprestimo` on `Filme`.`CodFilme` = `Emprestimo`.`CodFilme`
+where `Emprestimo`.`CodUsu` is null;
