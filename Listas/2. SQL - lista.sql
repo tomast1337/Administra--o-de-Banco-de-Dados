@@ -446,21 +446,21 @@ create table `Locadora` (
     `CodLoc` int not null auto_increment,
     `NomeLoc` varchar(50) not null,
     `UF` varchar(2) not null,
-    primary key (id)
+    primary key (`CodLoc`)
 );
 
 -- Genero(CodGen, Nome)
 create table `Genero` (
     `CodGen` int not null auto_increment,
     `Nome` varchar(50) not null,
-    primary key (id)
+    primary key (`CodGen`)
 );
 -- Usuario (CodUsu,NomeUsu, CodLoc)
 create table `Usuario`(
     `CodUsu` int not null auto_increment,
     `NomeUsu` varchar(50) not null,
     `CodLoc` int not null,
-    primary key (id),
+    primary key (`CodUsu`),
     foreign key (CodLoc) references Locadora(CodLoc)
 );
 
@@ -471,7 +471,7 @@ create table `Filme`(
     `Ano` int not null,
     `CodGen` int not null,
     `CodLoc` int not null,
-    primary key (id),
+    primary key (`CodFilme`),
     foreign key (CodGen) references Genero(CodGen),
     foreign key (CodLoc) references Locadora(CodLoc)
 );
@@ -483,7 +483,7 @@ create table `Emprestimo`(
     `DataEmprestada` date not null,
     `Vencimento` date not null,
     `DataDevol` date,
-    primary key (id),
+    primary key (`CodFilme`),
     foreign key (CodFilme) references Filme(CodFilme),
     foreign key (CodUsu) references Usuario(CodUsu)
 );
@@ -507,6 +507,11 @@ where CodLoc = (
     from locadora
     where NomeLoc = 'Divertida'
 );
+
+select `NomeUsu`
+from usuario
+join locadora on usuario.CodLoc = locadora.CodLoc
+where locadora.NomeLoc = 'Divertida';
 
 -- 20.  obtenha  os  filmes assistidos pelo usuário ‘Cinéfilo’. 
 
