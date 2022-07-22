@@ -1,0 +1,8 @@
+docker run \
+  --name some-mariadb \
+  -v "$(pwd)" \
+  --detach \
+  --network some-network \
+  --env MARIADB_USER=user \
+  --env MARIADB_PASSWORD=511156 \
+  --env MARIADB_ROOT_PASSWORD=511156 mariadb:latest
