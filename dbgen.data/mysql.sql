@@ -1,3 +1,6 @@
+Create Database if not exists trabalho;
+use trabalho;
+
 CREATE TABLE PART(
 	P_PARTKEY	BIGINT UNSIGNED PRIMARY KEY,
 	P_NAME		VARCHAR(55),
@@ -85,22 +88,50 @@ CREATE TABLE LINEITEM(
 	CONSTRAINT LINEITEM_PK PRIMARY KEY (L_ORDERKEY, L_LINENUMBER)	
 );
 
-LOAD DATA INFILE '/home/tomast1337/Administração banco de dados/dbgen.data/customer.tbl' IGNORE INTO TABLE CUSTOMER FIELDS TERMINATED BY '|';
-LOAD DATA INFILE '/home/tomast1337/Administração banco de dados/dbgen.data/lineitem.tbl' IGNORE INTO TABLE LINEITEM FIELDS TERMINATED BY '|';
-LOAD DATA INFILE '/home/tomast1337/Administração banco de dados/dbgen.data/nation.tbl' IGNORE INTO TABLE NATION FIELDS TERMINATED BY '|';
-LOAD DATA INFILE '/home/tomast1337/Administração banco de dados/dbgen.data/orders.tbl' IGNORE INTO TABLE ORDERS FIELDS TERMINATED BY '|';
-LOAD DATA INFILE '/home/tomast1337/Administração banco de dados/dbgen.data/part.tbl' IGNORE INTO TABLE PART FIELDS TERMINATED BY '|';
-LOAD DATA INFILE '/home/tomast1337/Administração banco de dados/dbgen.data/partsupp.tbl' IGNORE INTO TABLE PARTSUPP FIELDS TERMINATED BY '|';
-LOAD DATA INFILE '/home/tomast1337/Administração banco de dados/dbgen.data/region.tbl' IGNORE INTO TABLE REGION FIELDS TERMINATED BY '|';
-LOAD DATA INFILE '/home/tomast1337/Administração banco de dados/dbgen.data/supplier.tbl' IGNORE INTO TABLE SUPPLIER FIELDS TERMINATED BY '|';
 
+-- 1. LOAD DATA INFILE is a SQL statement that loads data from a file into a table.
+-- 2. '/var/lib/mysql/db.gen/customer.tbl' is the path to the file.
+-- 3. IGNORE INTO TABLE CUSTOMER FIELDS TERMINATED BY '|' is the syntax for loading data into a table.
+-- 4. The fields in the table are separated by '|'.
+LOAD DATA INFILE '/var/lib/mysql/db.gen/customer.tbl' IGNORE INTO TABLE CUSTOMER FIELDS TERMINATED BY '|';
+LOAD DATA INFILE '/var/lib/mysql/db.gen/lineitem.tbl' IGNORE INTO TABLE LINEITEM FIELDS TERMINATED BY '|';
+LOAD DATA INFILE '/var/lib/mysql/db.gen/nation.tbl' IGNORE INTO TABLE NATION FIELDS TERMINATED BY '|';
+LOAD DATA INFILE '/var/lib/mysql/db.gen/orders.tbl' IGNORE INTO TABLE ORDERS FIELDS TERMINATED BY '|';
+LOAD DATA INFILE '/var/lib/mysql/db.gen/part.tbl' IGNORE INTO TABLE PART FIELDS TERMINATED BY '|';
+LOAD DATA INFILE '/var/lib/mysql/db.gen/partsupp.tbl' IGNORE INTO TABLE PARTSUPP FIELDS TERMINATED BY '|';
+LOAD DATA INFILE '/var/lib/mysql/db.gen/region.tbl' IGNORE INTO TABLE REGION FIELDS TERMINATED BY '|';
+LOAD DATA INFILE '/var/lib/mysql/db.gen/supplier.tbl' IGNORE INTO TABLE SUPPLIER FIELDS TERMINATED BY '|';
+
+-- Add a foreign key constraint to the SUPPLIER table.
 ALTER TABLE SUPPLIER ADD CONSTRAINT SUPPLIER_FK FOREIGN KEY (S_NATIONKEY) REFERENCES NATION(N_NATIONKEY);
+
+-- Add a foreign key constraint to the PARTSUPP table.
 ALTER TABLE PARTSUPP ADD CONSTRAINT PARTSUPP_FK1 FOREIGN KEY (PS_PARTKEY) REFERENCES PART (P_PARTKEY);
 ALTER TABLE PARTSUPP ADD CONSTRAINT PARTSUPP_FK2 FOREIGN KEY (PS_SUPPKEY) REFERENCES SUPPLIER (S_SUPPKEY);
+
+-- Add a foreign key constraint to the CUSTOMER table.
 ALTER TABLE CUSTOMER ADD CONSTRAINT CUSTUMER_FK FOREIGN KEY (C_NATIONKEY) REFERENCES NATION (N_NATIONKEY);
+
+-- Add a foreign key constraint to the ORDERS table.
 ALTER TABLE ORDERS ADD CONSTRAINT ORDERS_FK FOREIGN KEY (O_CUSTKEY) REFERENCES CUSTOMER (C_CUSTKEY);
+
+-- Add a foreign key constraint to the LINEITEM table.
 ALTER TABLE LINEITEM ADD CONSTRAINT LINEITEM_FK1 FOREIGN KEY (L_PARTKEY, L_SUPPKEY) REFERENCES PARTSUPP (PS_PARTKEY, PS_SUPPKEY);
 ALTER TABLE LINEITEM ADD CONSTRAINT LINEITEM_FK2 FOREIGN KEY (L_ORDERKEY) REFERENCES ORDERS (O_ORDERKEY);
 ALTER TABLE LINEITEM ADD CONSTRAINT LINEITEM_FK3 FOREIGN KEY (L_PARTKEY) REFERENCES PART (P_PARTKEY);
 ALTER TABLE LINEITEM ADD CONSTRAINT LINEITEM_FK4 FOREIGN KEY (L_SUPPKEY) REFERENCES SUPPLIER (S_SUPPKEY);
+
+-- Add a foreign key constraint to the NATION table. 
 ALTER TABLE NATION ADD CONSTRAINT NATION_FK FOREIGN KEY (N_REGIONKEY) REFERENCES REGION (R_REGIONKEY);
+
+-- Create 5 TPC-H query that returns the number of customers in each nation.
+
+-- 1
+
+-- 2
+
+-- 3
+
+-- 4
+
+-- 5
