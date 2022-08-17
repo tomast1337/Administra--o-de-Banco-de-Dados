@@ -123,15 +123,3 @@ ALTER TABLE LINEITEM ADD CONSTRAINT LINEITEM_FK4 FOREIGN KEY (L_SUPPKEY) REFEREN
 
 -- Add a foreign key constraint to the NATION table. 
 ALTER TABLE NATION ADD CONSTRAINT NATION_FK FOREIGN KEY (N_REGIONKEY) REFERENCES REGION (R_REGIONKEY);
-
--- Create 5 TPC-H query that returns the number of customers in each nation.
-
--- 1
-
--- 2
-
--- 3
-
--- 4
-
--- 5
