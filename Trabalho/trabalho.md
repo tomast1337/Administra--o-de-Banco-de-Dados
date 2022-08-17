@@ -192,9 +192,6 @@ Substituições:
 1. `[NATION1]`: [ALGERIA, ARGENTINA, BRAZIL, CANADA, EGYPT, ETHIOPIA, FRANCE, GERMANY, INDIA, INDONESIA, IRAN, IRAQ, JAPAN, JORDAN, KENYA, MOROCCO, MOZAMBIQUE, PERU, CHINA, ROMANIA, SAUDI ARABIA, VIETNAM, RUSSIA, UNITED KINGDOM, UNITED STATES
 2. `[NATION2]`: Mesmo que [NATION1], porém com outro valor
 
-1. NATION1 is randomly selected within the list of values defined for N_NAME in Clause 4.2.3;
-2. NATION2 is randomly selected within the list of values defined for N_NAME in Clause 4.2.3 and must be different from the value selected for NATION1 in item 1 above.
-
 ## tempo médio
 
 mysql/mariaDB: 0.177s +
