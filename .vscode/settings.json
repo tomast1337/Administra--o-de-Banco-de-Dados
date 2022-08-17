@@ -26,5 +26,6 @@
             "database": "lista2",
             "username": "usuario"
         }
-    ]
+    ],
+    "editor.formatOnSave": false
 }
