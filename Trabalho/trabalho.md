@@ -155,7 +155,10 @@ Substituições:
 
 ![3](https://user-images.githubusercontent.com/15125899/185228026-aeaba3e6-963e-4481-91e0-a1a9b9287d16.png)
 
-Existem 3 full table scans nas tabelas REGION PART
+Existem 3 full table scans nas tabelas REGION, PART os da tabela REGION podem ser ignorados poque é uma tabela so com 5 linhas, em PART nos estaõs usando como condicional para a seleção as colunas não primarias P_TYPE e P_SIZE, podemos criar um idice composto com as duas da sequinte foma para melhoramos essa parte das busca, da seguinte foma, `CREATE INDEX P_TYPE_x_P_SIZE ON PART (P_SIZE,P_TYPE);`:
+
+![3](https://user-images.githubusercontent.com/15125899/185261078-6e72ec75-cbe9-4e6d-8451-52c490b1e1b4.png)
+
 
 ## Postgresql Explain Graph não Optimizado
 
