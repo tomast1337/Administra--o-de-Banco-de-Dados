@@ -5,9 +5,11 @@
 ## 1ª
 
 ```sql
+
 ```
 
 ## tempo médio
+
 mysql/mariaDB:
 postgresql:
 
@@ -18,6 +20,7 @@ postgresql:
 ```
 
 ## tempo médio
+
 mysql/mariaDB: 1.517s +
 postgresql:
 
@@ -73,16 +76,52 @@ ORDER BY S_ACCTBAL DESC,
 3. REGION is randomly selected within the list of values defined for R_NAME in Clause 4.2.3.
 
 ## tempo médio
-mysql/mariaDB: 0.301s + 
+
+mysql/mariaDB: 0.301s +
 postgresql:
 
 ## 4ª
 
 ```sql
+SELECT
+    L_SHIPMODE,
+    SUM(CASE
+        WHEN
+            O_ORDERPRIORITY = '1-URGENT'
+                OR O_ORDERPRIORITY = '2-HIGH'
+        THEN
+            1
+        ELSE 0
+    END) AS HIGH_LINE_COUNT,
+    SUM(CASE
+        WHEN
+            O_ORDERPRIORITY <> '1-URGENT'
+                AND O_ORDERPRIORITY <> '2-HIGH'
+        THEN
+            1
+        ELSE 0
+    END) AS LOW_LINE_COUNT
+FROM
+    ORDERS,
+    LINEITEM
+WHERE
+    O_ORDERKEY = L_ORDERKEY
+        AND L_SHIPMODE IN ('[SHIPMODE1]' , '[SHIPMODE2]')
+        AND L_COMMITDATE < L_RECEIPTDATE
+        AND L_SHIPDATE < L_COMMITDATE
+        AND L_RECEIPTDATE >= DATE '[DATE]'
+        AND L_RECEIPTDATE < DATE '[DATE]' + INTERVAL '1' YEAR
+GROUP BY L_SHIPMODE
+ORDER BY L_SHIPMODE;
 ```
 
+1. SHIPMODE1 is randomly selected within the list of values defined for Modes in Clause 4.2.2.13;
+2. SHIPMODE2 is randomly selected within the list of values defined for Modes in Clause 4.2.2.13 and must be different from the value selected for SHIPMODE1 in item 1;
+3. DATE is the first of January of a randomly selected year within [1993 .. 1997]
+
 ## tempo médio
-mysql/mariaDB:
+
+mysql/mariaDB: 0.565s +
 postgresql:
 
 ## 5ª
@@ -93,10 +132,10 @@ postgresql:
 -- which parts were shipped from a supplier in either nation to a customer in the other nation during 1995 and 1996.
 -- The query lists the supplier nation, the customer nation, the year, and the revenue from shipments that took place in
 -- that year. The query orders the answer by Supplier nation, Customer nation, and year (all ascending).
-SELECT 
+SELECT
     SUPP_NATION, CUST_NATION, L_YEAR, SUM(VOLUME) AS REVENUE
 FROM
-    (SELECT 
+    (SELECT
         N1.N_NAME AS SUPP_NATION,
             N2.N_NAME AS CUST_NATION,
             EXTRACT(YEAR FROM L_SHIPDATE) AS L_YEAR,
@@ -122,5 +161,6 @@ ORDER BY SUPP_NATION , CUST_NATION , L_YEAR;
 2. NATION2 is randomly selected within the list of values defined for N_NAME in Clause 4.2.3 and must be different from the value selected for NATION1 in item 1 above.
 
 ## tempo médio
+
 mysql/mariaDB: 0.177s +
 postgresql:
