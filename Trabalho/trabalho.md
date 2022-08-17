@@ -38,7 +38,7 @@ ORDER BY REVENUE DESC;
 1. DATE is the first day of a randomly selected month between the first month of 1993 and the 12th month of 1994.
 ## tempo médio
 
-mysql/mariaDB: 0.359s +
+mysql/mariaDB: 0.359s, 0.516s, 0.255s, 0.307s, 0.261s: AVG = 0.3396s
 postgresql:
 
 ## 2ª
@@ -64,7 +64,7 @@ WHERE L_PARTKEY = P_PARTKEY
 
 ## tempo médio
 
-mysql/mariaDB: 1.193s +
+mysql/mariaDB: 1.193s, 1.103s, 1.074s, 1.202s, 1.129s: AVG = 1.1402s
 postgresql:
 
 ## 3ª
@@ -122,7 +122,7 @@ Substituições:
 
 ## tempo médio
 
-mysql/mariaDB: 0.301s +
+mysql/mariaDB: 0.301s, 0.165s, 0.165s, 0.170s, 0.166s: AVG = 0.1934s
 postgresql:
 
 ## 4ª
@@ -173,7 +173,7 @@ Substituições:
 
 ## tempo médio
 
-mysql/mariaDB: 0.565s +
+mysql/mariaDB: 0.565s, 0.466s, 0.475s, 0.473s, 0.469s : AVG = 0.4896s
 postgresql:
 
 ## 5ª
@@ -216,5 +216,5 @@ Substituições:
 
 ## tempo médio
 
-mysql/mariaDB: 0.177s +
+mysql/mariaDB: 0.089s, 0.087s, 0.088s, 0.086s, 0.088s: AVG = 0.0876s
 postgresql:
