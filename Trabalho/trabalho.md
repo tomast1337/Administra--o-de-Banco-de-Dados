@@ -47,7 +47,11 @@ ORDER BY REVENUE DESC;
 
 ![1](https://user-images.githubusercontent.com/15125899/185228002-eb2e1cd8-f46a-43e2-975a-678c89106127.png)
 
-Existem um full table scan em ORDERS por conta da leitura `O_ORDERDATE`, en~tao uma possível optimização e criar um índice com `O_ORDERDATE`
+Existem um full table scan em ORDERS por conta da leitura `O_ORDERDATE`, então uma possível optimização e criar um índice com `O_ORDERDATE`
+
+Criando o index `CREATE INDEX O_ORDERDATE_Index ON ORDERS (O_ORDERDATE);` a consulta fica da seguinte forma:
+
+![1](https://user-images.githubusercontent.com/15125899/185257913-29fb7d4f-0868-449f-901e-c04b12c8f550.png)
 
 ## Postgresql Explain Graph não Optimizado
 
