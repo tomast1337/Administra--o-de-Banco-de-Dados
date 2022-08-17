@@ -43,7 +43,7 @@ postgresql: 0.290s + 0.200s + 0.215s + 0.198s + 0.249s
 
 ## My SQL/ Maria DB Explain Graph não Optimizado
 
-![image](https://user-images.githubusercontent.com/15125899/185221834-6dbea529-6119-4234-be1a-05d657cfcd4b.png)
+![1](https://user-images.githubusercontent.com/15125899/185228002-eb2e1cd8-f46a-43e2-975a-678c89106127.png)
 
 ## Postgresql Explain Graph não Optimizado
 
@@ -75,7 +75,7 @@ postgresql: 0.103s + 0.091s + 0.155s + 0.145s + 0.171s
 
 ## My SQL/ Maria DB Explain Graph não Optimizado
 
-![image](https://user-images.githubusercontent.com/15125899/185222034-bbb30566-ed9e-41ec-9976-95ca15330439.png)
+![2](https://user-images.githubusercontent.com/15125899/185228013-fba3d211-b178-441a-a046-180e97ef321c.png)
 
 ## Postgresql Explain Graph não Optimizado
 
@@ -139,7 +139,7 @@ postgresql: 0.109s + 0.105s + 0.124s + 0.141s + 0.140s
 
 ## My SQL/ Maria DB Explain Graph não Optimizado
 
-![image](https://user-images.githubusercontent.com/15125899/185221305-138f23e3-78e5-4a14-afd9-8be8869a2ecd.png)
+![3](https://user-images.githubusercontent.com/15125899/185228026-aeaba3e6-963e-4481-91e0-a1a9b9287d16.png)
 
 ## Postgresql Explain Graph não Optimizado
 
@@ -196,6 +196,8 @@ postgresql: 0.291s + 0.158s + 0.169s + 0.156s + 0.221s
 
 ## My SQL/ Maria DB Explain Graph não Optimizado
 
+![4](https://user-images.githubusercontent.com/15125899/185228041-dc6842f2-e242-4d0c-8f99-48ef8a17f377.png)
+
 ## Postgresql Explain Graph não Optimizado
 
 ## 5ª
@@ -242,5 +244,7 @@ mysql/mariaDB: 0.089s, 0.087s, 0.088s, 0.086s, 0.088s: AVG = 0.0876s
 postgresql: 0.160s + 0.152s + 0.134s + 0.131s + 0.144s
 
 ## My SQL/ Maria DB Explain Graph não Optimizado
+
+![5](https://user-images.githubusercontent.com/15125899/185228055-086350f2-82de-45d7-b2be-0e048ebb560d.png)
 
 ## Postgresql Explain Graph não Optimizado
