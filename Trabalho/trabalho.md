@@ -5,7 +5,7 @@
 ## 1ª
 
 ```sql
--- Business question
+-- 2.13 Business question
 -- The Returned Item Reporting Query finds the top 20 customers, in terms of their effect on lost revenue for a given
 -- quarter, who have returned parts. The query considers only parts that were ordered in the specified quarter. The
 -- query lists the customer's name, address, nation, phone number, account balance, comment information and revenue
@@ -55,7 +55,7 @@ postgresql:
 ## 3ª
 
 ```sql
--- Business Question
+-- 2.5 Business Question
 -- The Minimum Cost Supplier Query finds, in a given region, for each part of a certain type and size, the supplier
 -- who can supply it at minimum cost. If several suppliers in that region offer the desired part type and size at the same
 -- (minimum) cost, the query lists the parts from suppliers with the 100 highest account balances. For each supplier,
@@ -113,6 +113,11 @@ postgresql:
 ## 4ª
 
 ```sql
+-- 2.15 Business Question
+-- The Shipping Modes and Order Priority Query counts, by ship mode, for lineitems actually received by customers
+-- in a given year, the number of lineitems belonging to orders for which the l_receiptdate exceeds the l_commitdate
+-- for two different specified ship modes. Only lineitems that were actually shipped before the l_commitdate are considered. The late lineitems are partitioned into two groups, those with priority URGENT or HIGH, and those with a
+-- priority other than URGENT or HIGH.
 SELECT
     L_SHIPMODE,
     SUM(CASE
@@ -157,7 +162,7 @@ postgresql:
 ## 5ª
 
 ```sql
--- Business Question
+-- 2.10 Business Question
 -- The Volume Shipping Query finds, for two given nations, the gross discounted revenues derived from line items in
 -- which parts were shipped from a supplier in either nation to a customer in the other nation during 1995 and 1996.
 -- The query lists the supplier nation, the customer nation, the year, and the revenue from shipments that took place in
