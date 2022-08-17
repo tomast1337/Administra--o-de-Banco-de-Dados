@@ -86,7 +86,9 @@ WHERE L_PARTKEY = P_PARTKEY
 
 ![2](https://user-images.githubusercontent.com/15125899/185228013-fba3d211-b178-441a-a046-180e97ef321c.png)
 
-Existem um full table scan em PART
+Existem um full table scan em LINEITEM para buscar as datas na condição, então criei um indice com a coluna `L_SHIPDATE`:  `CREATE INDEX L_SHIPDATE_Index ON LINEITEM (L_SHIPDATE);` deixando a consulta da seguinte forma.
+
+![2](https://user-images.githubusercontent.com/15125899/185259444-eb1a7997-871b-49e5-8d37-2d866445b7da.png)
 
 ## Postgresql Explain Graph não Optimizado
 
