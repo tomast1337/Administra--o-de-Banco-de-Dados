@@ -44,12 +44,27 @@ postgresql:
 ## 2ª
 
 ```sql
-
+-- 2.17 Business Question
+-- The Promotion Effect Query determines what percentage of the revenue in a given year and month was derived
+-- from promotional parts. The query considers only parts actually shipped in that month and gives the percentage.
+-- Revenue is defined as (l_extendedprice * (1-l_discount)).
+SELECT 100.00 * SUM(
+        CASE
+            WHEN P_TYPE LIKE 'PROMO%' THEN L_EXTENDEDPRICE *(1 - L_DISCOUNT)
+            ELSE 0
+        END
+    ) / SUM(L_EXTENDEDPRICE * (1 - L_DISCOUNT)) AS PROMO_REVENUE
+FROM LINEITEM,
+    PART
+WHERE L_PARTKEY = P_PARTKEY
+    AND L_SHIPDATE >= DATE '[DATE]'
+    AND L_SHIPDATE < DATE '[DATE]' + INTERVAL '1' MONTH;
 ```
+1. DATE is the first day of a month randomly selected from a random year within [1993 .. 1997].
 
 ## tempo médio
 
-mysql/mariaDB: 1.517s +
+mysql/mariaDB: 1.193s +
 postgresql:
 
 ## 3ª
