@@ -42,12 +42,11 @@ mysql/mariaDB: 0.359s, 0.516s, 0.255s, 0.307s, 0.261s: AVG = 0.3396s
 
 postgresql: 0.290s + 0.200s + 0.215s + 0.198s + 0.249s
 
-## My SQL/ Maria DB Explain Graph não Optimizado
+### My SQL/ Maria DB Explain Graph não Optimizado
 
 ![1](https://user-images.githubusercontent.com/15125899/185228002-eb2e1cd8-f46a-43e2-975a-678c89106127.png)
 
-## 
-Postgresql Explain Graph não Optimizado
+### Postgresql Explain Graph não Optimizado
 
 ## 2ª
 
@@ -72,16 +71,15 @@ WHERE L_PARTKEY = P_PARTKEY
 
 ## Tempo Médio não Optimizado
 
-mysql/mariaDB: 1.193s, 1.103s, 1.074s, 1.202s, 1.129s: AVG = 1.1402s
+**mysql/mariaDB**: 1.193s, 1.103s, 1.074s, 1.202s, 1.129s: AVG = 1.1402s
 
-postgresql: 0.103s + 0.091s + 0.155s + 0.145s + 0.171s
+**postgresql**: 0.103s + 0.091s + 0.155s + 0.145s + 0.171s
 
-## My SQL/ Maria DB Explain Graph não Optimizado
+### My SQL/ Maria DB Explain Graph não Optimizado
 
 ![2](https://user-images.githubusercontent.com/15125899/185228013-fba3d211-b178-441a-a046-180e97ef321c.png)
 
-## 
-Postgresql Explain Graph não Optimizado
+### Postgresql Explain Graph não Optimizado
 
 ## 3ª
 
@@ -138,16 +136,15 @@ Substituições:
 
 ## Tempo Médio não Optimizado
 
-mysql/mariaDB: 0.301s, 0.165s, 0.165s, 0.170s, 0.166s: AVG = 0.1934s
+**mysql/mariaDB**: 0.301s, 0.165s, 0.165s, 0.170s, 0.166s: AVG = 0.1934s
 
-postgresql: 0.109s + 0.105s + 0.124s + 0.141s + 0.140s
+**postgresql**: 0.109s + 0.105s + 0.124s + 0.141s + 0.140s
 
-## My SQL/ Maria DB Explain Graph não Optimizado
+### My SQL/ Maria DB Explain Graph não Optimizado
 
 ![3](https://user-images.githubusercontent.com/15125899/185228026-aeaba3e6-963e-4481-91e0-a1a9b9287d16.png)
 
-## 
-Postgresql Explain Graph não Optimizado
+### Postgresql Explain Graph não Optimizado
 
 ## 4ª
 
@@ -197,16 +194,15 @@ Substituições:
 
 ## Tempo Médio não Optimizado
 
-mysql/mariaDB: 0.565s, 0.466s, 0.475s, 0.473s, 0.469s : AVG = 0.4896s
+**mysql/mariaDB**: 0.565s, 0.466s, 0.475s, 0.473s, 0.469s : AVG = 0.4896s
 
-postgresql: 0.291s + 0.158s + 0.169s + 0.156s + 0.221s
+**postgresql**: 0.291s + 0.158s + 0.169s + 0.156s + 0.221s
 
-## My SQL/ Maria DB Explain Graph não Optimizado
+### My SQL/ Maria DB Explain Graph não Optimizado
 
 ![4](https://user-images.githubusercontent.com/15125899/185228041-dc6842f2-e242-4d0c-8f99-48ef8a17f377.png)
 
-## 
-Postgresql Explain Graph não Optimizado
+### Postgresql Explain Graph não Optimizado
 
 ## 5ª
 
@@ -248,13 +244,12 @@ Substituições:
 
 ## Tempo Médio não Optimizado
 
-mysql/mariaDB: 0.089s, 0.087s, 0.088s, 0.086s, 0.088s: AVG = 0.0876s
+**mysql/mariaDB**: 0.089s, 0.087s, 0.088s, 0.086s, 0.088s: AVG = 0.0876s
 
-postgresql: 0.160s + 0.152s + 0.134s + 0.131s + 0.144s
+**postgresql**: 0.160s + 0.152s + 0.134s + 0.131s + 0.144s
 
-## My SQL/ Maria DB Explain Graph não Optimizado
+### My SQL/ Maria DB Explain Graph não Optimizado
 
 ![5](https://user-images.githubusercontent.com/15125899/185228055-086350f2-82de-45d7-b2be-0e048ebb560d.png)
 
-## 
-Postgresql Explain Graph não Optimizado
+### Postgresql Explain Graph não Optimizado
