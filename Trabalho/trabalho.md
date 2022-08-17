@@ -47,6 +47,8 @@ ORDER BY REVENUE DESC;
 
 ![1](https://user-images.githubusercontent.com/15125899/185228002-eb2e1cd8-f46a-43e2-975a-678c89106127.png)
 
+Existem um full table scan em ORDERS por conta da leitura `O_ORDERDATE`, en~tao uma possível optimização e criar um índice com `O_ORDERDATE`
+
 ## Postgresql Explain Graph não Optimizado
 
 ## 2ª
@@ -79,6 +81,8 @@ WHERE L_PARTKEY = P_PARTKEY
 ### My SQL/ Maria DB Explain Graph não Optimizado
 
 ![2](https://user-images.githubusercontent.com/15125899/185228013-fba3d211-b178-441a-a046-180e97ef321c.png)
+
+Existem um full table scan em PART
 
 ## Postgresql Explain Graph não Optimizado
 
@@ -144,6 +148,8 @@ Substituições:
 ### My SQL/ Maria DB Explain Graph não Optimizado
 
 ![3](https://user-images.githubusercontent.com/15125899/185228026-aeaba3e6-963e-4481-91e0-a1a9b9287d16.png)
+
+Existem 3 full table scans nas tabelas REGION PART
 
 ## Postgresql Explain Graph não Optimizado
 
