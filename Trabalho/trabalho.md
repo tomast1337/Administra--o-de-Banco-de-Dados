@@ -39,7 +39,7 @@ ORDER BY REVENUE DESC;
 ## tempo médio
 
 mysql/mariaDB: 0.359s, 0.516s, 0.255s, 0.307s, 0.261s: AVG = 0.3396s
-postgresql:
+postgresql: 0.290s + 0.200s + 0.215s + 0.198s + 0.249s
 
 ## 2ª
 
@@ -65,7 +65,7 @@ WHERE L_PARTKEY = P_PARTKEY
 ## tempo médio
 
 mysql/mariaDB: 1.193s, 1.103s, 1.074s, 1.202s, 1.129s: AVG = 1.1402s
-postgresql:
+postgresql: 0.103s + 0.091s + 0.155s + 0.145s + 0.171s
 
 ## 3ª
 
@@ -123,7 +123,7 @@ Substituições:
 ## tempo médio
 
 mysql/mariaDB: 0.301s, 0.165s, 0.165s, 0.170s, 0.166s: AVG = 0.1934s
-postgresql:
+postgresql: 0.109s + 0.105s + 0.124s + 0.141s + 0.140s
 
 ## 4ª
 
@@ -174,7 +174,7 @@ Substituições:
 ## tempo médio
 
 mysql/mariaDB: 0.565s, 0.466s, 0.475s, 0.473s, 0.469s : AVG = 0.4896s
-postgresql:
+postgresql: 0.291s + 0.158s + 0.169s + 0.156s + 0.221s
 
 ## 5ª
 
@@ -217,4 +217,4 @@ Substituições:
 ## tempo médio
 
 mysql/mariaDB: 0.089s, 0.087s, 0.088s, 0.086s, 0.088s: AVG = 0.0876s
-postgresql:
+postgresql: 0.160s + 0.152s + 0.134s + 0.131s + 0.144s
