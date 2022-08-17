@@ -150,9 +150,11 @@ GROUP BY L_SHIPMODE
 ORDER BY L_SHIPMODE;
 ```
 
-1. SHIPMODE1 is randomly selected within the list of values defined for Modes in Clause 4.2.2.13;
-2. SHIPMODE2 is randomly selected within the list of values defined for Modes in Clause 4.2.2.13 and must be different from the value selected for SHIPMODE1 in item 1;
-3. DATE is the first of January of a randomly selected year within [1993 .. 1997]
+Substituições:
+
+1. `[SHIPMODE1]`: [REG AIR, AIR, RAIL, SHIP, TRUCK, MAIL, FOB]
+2. `[SHIPMODE2]`: Mesmo que `[SHIPMODE1]` porém com outro valor
+3. `[DATE]`: '1993-01-31' com ano entre [1993 .. 1997]
 
 ## tempo médio
 
