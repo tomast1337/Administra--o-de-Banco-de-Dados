@@ -45,8 +45,8 @@ FROM PART,
     REGION
 WHERE P_PARTKEY = PS_PARTKEY
     AND S_SUPPKEY = PS_SUPPKEY
-    AND P_SIZE = [SIZE]
-    AND P_TYPE LIKE  '%[TYPE]'
+    AND P_SIZE = '[P_SIZE]'
+    AND P_TYPE LIKE '%[TYPE]'
     AND S_NATIONKEY = N_NATIONKEY
     AND N_REGIONKEY = R_REGIONKEY
     AND R_NAME = '[REGION]'
@@ -68,9 +68,11 @@ ORDER BY S_ACCTBAL DESC,
     P_PARTKEY;
 ```
 
-1. SIZE is randomly selected within [1. 50];
-2. TYPE is randomly selected within the list Syllable 3 defined for Types in Clause 4.2.2.13;
-3. REGION is randomly selected within the list of values defined for R_NAME in Clause 4.2.3.
+Substituições:
+
+-   [P_SIZE]: [1, 50]
+-   [TYPE]: [TIN, NICKEL, BRASS, STEEL, COPPER]
+-   [REGION]: [AFRICA, AMERICA, ASIA, EUROPE, MIDDLE EAST]
 
 ## tempo médio
 mysql/mariaDB: 0.301s + 
