@@ -5,12 +5,40 @@
 ## 1ª
 
 ```sql
-
+-- Business question
+-- The Returned Item Reporting Query finds the top 20 customers, in terms of their effect on lost revenue for a given
+-- quarter, who have returned parts. The query considers only parts that were ordered in the specified quarter. The
+-- query lists the customer's name, address, nation, phone number, account balance, comment information and revenue
+-- lost. The customers are listed in descending order of lost revenue. Revenue lost is defined as
+-- sum(l_extendedprice*(1-l_discount)) for all qualifying lineitems.
+SELECT 
+    C_CUSTKEY,
+    C_NAME,
+    SUM(L_EXTENDEDPRICE * (1 - L_DISCOUNT)) AS REVENUE,
+    C_ACCTBAL,
+    N_NAME,
+    C_ADDRESS,
+    C_PHONE,
+    C_COMMENT
+FROM
+    CUSTOMER,
+    ORDERS,
+    LINEITEM,
+    NATION
+WHERE
+    C_CUSTKEY = O_CUSTKEY
+        AND L_ORDERKEY = O_ORDERKEY
+        AND O_ORDERDATE >= DATE '[DATE]'
+        AND O_ORDERDATE < DATE '[DATE]' + INTERVAL '3' MONTH
+        AND L_RETURNFLAG = 'R'
+        AND C_NATIONKEY = N_NATIONKEY
+GROUP BY C_CUSTKEY , C_NAME , C_ACCTBAL , C_PHONE , N_NAME , C_ADDRESS , C_COMMENT
+ORDER BY REVENUE DESC;
 ```
-
+1. DATE is the first day of a randomly selected month between the first month of 1993 and the 12th month of 1994.
 ## tempo médio
 
-mysql/mariaDB:
+mysql/mariaDB: 0.359s +
 postgresql:
 
 ## 2ª
