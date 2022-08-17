@@ -35,18 +35,19 @@ WHERE
 GROUP BY C_CUSTKEY , C_NAME , C_ACCTBAL , C_PHONE , N_NAME , C_ADDRESS , C_COMMENT
 ORDER BY REVENUE DESC;
 ```
-1. DATE is the first day of a randomly selected month between the first month of 1993 and the 12th month of 1994.
-## Tempo Médio não Optimizado
+1. `[DATE]` 1993|1994-[01-12]-01
 
-mysql/mariaDB: 0.359s, 0.516s, 0.255s, 0.307s, 0.261s: AVG = 0.3396s
+### Tempo Médio não Optimizado
 
-postgresql: 0.290s + 0.200s + 0.215s + 0.198s + 0.249s
+**mysql/mariaDB**: 0.359 + 0.516 + 0.255 + 0.307 + 0.261: AVG = 0.3396s
+
+**postgresql**: 0.290 + 0.200 + 0.215 + 0.198 + 0.249: AVG = 0.2304s
 
 ### My SQL/ Maria DB Explain Graph não Optimizado
 
-![1](https://user-images.githubusercontent.com/15125899/185228002-eb2e1cd8-f46a-43e2-975a-678c89106127.png)
+![1](https://user-images.githubusercontent.com/15125899/185228002-eb2e1cd8-f46a-43e2-975a-**678c89106127.png)
 
-### Postgresql Explain Graph não Optimizado
+## Postgresql Explain Graph não Optimizado
 
 ## 2ª
 
@@ -67,19 +68,19 @@ WHERE L_PARTKEY = P_PARTKEY
     AND L_SHIPDATE >= DATE '[DATE]'
     AND L_SHIPDATE < DATE '[DATE]' + INTERVAL '1' MONTH;
 ```
-1. DATE is the first day of a month randomly selected from a random year within [1993 .. 1997].
+1. `[DATE]` [1993-1997]-[01-12]-01
 
-## Tempo Médio não Optimizado
+### Tempo Médio não Optimizado
 
-**mysql/mariaDB**: 1.193s, 1.103s, 1.074s, 1.202s, 1.129s: AVG = 1.1402s
+**mysql/mariaDB**: 1.193 + 1.103 + 1.074 + 1.202 + 1.129: AVG = 1.1402s
 
-**postgresql**: 0.103s + 0.091s + 0.155s + 0.145s + 0.171s
+**postgresql**: 0.103 + 0.091 + 0.155 + 0.145 + 0.171: AVG = 0.133s
 
 ### My SQL/ Maria DB Explain Graph não Optimizado
 
-![2](https://user-images.githubusercontent.com/15125899/185228013-fba3d211-b178-441a-a046-180e97ef321c.png)
+![2](https://user-images.githubusercontent.com/15125899/185228013-fba3d211-b178-441a-a046-**180e97ef321c.png)
 
-### Postgresql Explain Graph não Optimizado
+## Postgresql Explain Graph não Optimizado
 
 ## 3ª
 
@@ -130,21 +131,21 @@ ORDER BY S_ACCTBAL DESC,
 
 Substituições:
 
--   [P_SIZE]: [1, 50]
--   [TYPE]: [TIN, NICKEL, BRASS, STEEL, COPPER]
--   [REGION]: [AFRICA, AMERICA, ASIA, EUROPE, MIDDLE EAST]
+-   `[P_SIZE]`: [1, 50]
+-   `[TYPE]`: [TIN, NICKEL, BRASS, STEEL, COPPER]
+-   `[REGION]`: [AFRICA, AMERICA, ASIA, EUROPE, MIDDLE EAST]
 
-## Tempo Médio não Optimizado
+### Tempo Médio não Optimizado
 
-**mysql/mariaDB**: 0.301s, 0.165s, 0.165s, 0.170s, 0.166s: AVG = 0.1934s
+**mysql/mariaDB**: 0.145 + 0.165 + 0.165 + 0.170 + 0.166: AVG = 0.1934 s
 
-**postgresql**: 0.109s + 0.105s + 0.124s + 0.141s + 0.140s
+**postgresql**: 0.109 + 0.105 + 0.124 + 0.141 + 0.140s : AVG = 0.1238 s
 
 ### My SQL/ Maria DB Explain Graph não Optimizado
 
-![3](https://user-images.githubusercontent.com/15125899/185228026-aeaba3e6-963e-4481-91e0-a1a9b9287d16.png)
+![3](https://user-images.githubusercontent.com/15125899/185228026-aeaba3e6-963e-4481-91e0-**a1a9b9287d16.png)
 
-### Postgresql Explain Graph não Optimizado
+## Postgresql Explain Graph não Optimizado
 
 ## 4ª
 
@@ -192,17 +193,17 @@ Substituições:
 2. `[SHIPMODE2]`: Mesmo que `[SHIPMODE1]` porém com outro valor
 3. `[DATE]`: '1993-01-31' com ano entre [1993 .. 1997]
 
-## Tempo Médio não Optimizado
+### Tempo Médio não Optimizado
 
-**mysql/mariaDB**: 0.565s, 0.466s, 0.475s, 0.473s, 0.469s : AVG = 0.4896s
+**mysql/mariaDB**: 0.565 + 0.466 + 0.475 + 0.473 + 0.469: AVG = 0.4896 s
 
-**postgresql**: 0.291s + 0.158s + 0.169s + 0.156s + 0.221s
+**postgresql**: 0.291 + 0.158 + 0.169 + 0.156 + 0.221: AVG = 0.199 s
 
 ### My SQL/ Maria DB Explain Graph não Optimizado
 
-![4](https://user-images.githubusercontent.com/15125899/185228041-dc6842f2-e242-4d0c-8f99-48ef8a17f377.png)
+![4](https://user-images.githubusercontent.com/15125899/185228041-dc6842f2-e242-4d0c-8f99-**48ef8a17f377.png)
 
-### Postgresql Explain Graph não Optimizado
+## Postgresql Explain Graph não Optimizado
 
 ## 5ª
 
@@ -242,14 +243,14 @@ Substituições:
 1. `[NATION1]`: [ALGERIA, ARGENTINA, BRAZIL, CANADA, EGYPT, ETHIOPIA, FRANCE, GERMANY, INDIA, INDONESIA, IRAN, IRAQ, JAPAN, JORDAN, KENYA, MOROCCO, MOZAMBIQUE, PERU, CHINA, ROMANIA, SAUDI ARABIA, VIETNAM, RUSSIA, UNITED KINGDOM, UNITED STATES
 2. `[NATION2]`: Mesmo que [NATION1], porém com outro valor
 
-## Tempo Médio não Optimizado
+### Tempo Médio não Optimizado
 
-**mysql/mariaDB**: 0.089s, 0.087s, 0.088s, 0.086s, 0.088s: AVG = 0.0876s
+**mysql/mariaDB**: 0.089 + 0.087 + 0.088 + 0.086 + 0.088: AVG = 0.0876 s
 
-**postgresql**: 0.160s + 0.152s + 0.134s + 0.131s + 0.144s
+**postgresql**: 0.160 + 0.152 + 0.134 + 0.131 + 0.144: AVG = 0.1442 s
 
 ### My SQL/ Maria DB Explain Graph não Optimizado
 
-![5](https://user-images.githubusercontent.com/15125899/185228055-086350f2-82de-45d7-b2be-0e048ebb560d.png)
+![5](https://user-images.githubusercontent.com/15125899/185228055-086350f2-82de-45d7-b2be-**0e048ebb560d.png)
 
-### Postgresql Explain Graph não Optimizado
+## Postgresql Explain Graph não Optimizado
