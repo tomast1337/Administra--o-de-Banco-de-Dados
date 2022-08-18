@@ -53,7 +53,7 @@ Criando o index `CREATE INDEX O_ORDERDATE_Index ON ORDERS (O_ORDERDATE);` a cons
 
 ![1](https://user-images.githubusercontent.com/15125899/185257913-29fb7d4f-0868-449f-901e-c04b12c8f550.png)
 
-## Postgresql Explain Graph não Optimizado
+### Postgresql Explain Graph não Optimizado
 
 ### Tempo Médio Optimizado
 
@@ -99,7 +99,7 @@ Existem um full table scan em LINEITEM para buscar as datas na condição, entã
 
 ![2](https://user-images.githubusercontent.com/15125899/185259444-eb1a7997-871b-49e5-8d37-2d866445b7da.png)
 
-## Postgresql Explain Graph não Optimizado
+### Postgresql Explain Graph não Optimizado
 
 ### Tempo Médio Optimizado
 
@@ -178,7 +178,7 @@ Existem 3 full table scans nas tabelas REGION, PART os da tabela REGION podem se
 ![3](https://user-images.githubusercontent.com/15125899/185261078-6e72ec75-cbe9-4e6d-8451-52c490b1e1b4.png)
 
 
-## Postgresql Explain Graph não Optimizado
+### Postgresql Explain Graph não Optimizado
 
 ### Tempo Médio Optimizado
 
@@ -247,7 +247,7 @@ Substituições:
 
 Uma possível optimização poderia ser um índice com a tabela `LINEITEM` porem teria que ser um item composto com tantas colunas que seria a mesma coisa que ler a tabela. isso foi experimentado e o mysql sempre tentar fazer toda seleção ao mesmo tempo ignorando a existência do índice. Tentamos reescrever a consulta separando um uma consulta menor que poderia ser utiliza o índice, porem ao colocar as outras condições relacionas a busca dentro de `LINEITEM` o my sql sempre prefere executar todas as condicionais por toda tabela. 
 
-## Postgresql Explain Graph não Optimizado
+### Postgresql Explain Graph não Optimizado
 
 ### Tempo Médio Optimizado
 
@@ -306,7 +306,7 @@ Substituições:
 
 ![5](https://user-images.githubusercontent.com/15125899/185228055-086350f2-82de-45d7-b2be-0e048ebb560d.png)
 
-## Postgresql Explain Graph não Optimizado
+### Postgresql Explain Graph não Optimizado
 
 
 ### Tempo Médio Optimizado
