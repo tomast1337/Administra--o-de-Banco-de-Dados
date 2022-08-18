@@ -218,6 +218,8 @@ Substituições:
 
 ![4](https://user-images.githubusercontent.com/15125899/185228041-dc6842f2-e242-4d0c-8f99-48ef8a17f377.png)
 
+Uma possivel optimização poderia ser um idice com a tabela `LINEITEM` porem teri que ser um item composto com tantas colunas que seria a mesma coisa que ler a tabela.
+
 ## Postgresql Explain Graph não Optimizado
 
 ## 5ª
