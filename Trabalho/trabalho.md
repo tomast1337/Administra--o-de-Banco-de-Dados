@@ -57,7 +57,7 @@ Criando o index `CREATE INDEX O_ORDERDATE_Index ON ORDERS (O_ORDERDATE);` a cons
 
 ### Tempo Médio Optimizado
 
-**mysql/mariaDB**:
+**mysql/mariaDB**: 0.152 + 0.171 + 0.130 + 0.154 + 0.157: AVG 0.1528s
 
 **postgresql**:
 
@@ -103,7 +103,7 @@ Existem um full table scan em LINEITEM para buscar as datas na condição, entã
 
 ### Tempo Médio Optimizado
 
-**mysql/mariaDB**:
+**mysql/mariaDB**: 0.064 + 0.052 + 0.047 + 0.058 + 0.055: AVG = 0.0552s
 
 **postgresql**:
 
@@ -182,7 +182,7 @@ Existem 3 full table scans nas tabelas REGION, PART os da tabela REGION podem se
 
 ### Tempo Médio Optimizado
 
-**mysql/mariaDB**:
+**mysql/mariaDB**:  0.028 +  0.029 +  0.029 +  0.021 +  0.031: AVG = 0.0276s
 
 **postgresql**:
 
@@ -251,7 +251,7 @@ Uma possível optimização poderia ser um índice com a tabela `LINEITEM` porem
 
 ### Tempo Médio Optimizado
 
-**mysql/mariaDB**:
+**mysql/mariaDB**: Não Aplicável
 
 **postgresql**:
 
