@@ -55,11 +55,17 @@ Criando o index `CREATE INDEX O_ORDERDATE_Index ON ORDERS (O_ORDERDATE);` a cons
 
 ### Postgresql Explain Graph não Optimizado
 
+Tentamos criar um índice simples em L_RETURNFLAG (se o item foi retornado ou não), mas o PostgreSQL não usou o índice, e resolveu fazer a busca sequencial (provavelmente pelo número de itens retornados ser maior que 10% do total de itens, assim fazendo com que o uso do índice seja ineficiente por exigir a leitura de vários blocos do disco.)
+
+Em NATION não vale a pena criar o índice, por serem poucas tuplas.
+
+A estratégia utilizada no MySQL de criar o índice na data do pedido (O_ORDERDATE) funciona, e o Postgres utiliza o índice; porém, a melhoria no tempo de consulta não é muito relevante - da ordem de alguns milissegundos - , pois ela já é bem rápida mesmo sem o uso do índice.
+
 ### Tempo Médio Optimizado
 
 **mysql/mariaDB**: 0.152 + 0.171 + 0.130 + 0.154 + 0.157: AVG 0.1528s
 
-**postgresql**:
+**postgresql**: 0.244 + 0.267 + 0.242 + 0.234 + 0.261: AVG 0.249s
 
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -101,11 +107,14 @@ Existem um full table scan em LINEITEM para buscar as datas na condição, entã
 
 ### Postgresql Explain Graph não Optimizado
 
+A mesma estratégia aplicada no MySQL, com um índice simples em L_SHIPDATE, funciona muito bem, evitando a busca e filtragem sequencial do período de data informado, e assim reduzindo o tempo total de processamento em mais da metade.
+
+
 ### Tempo Médio Optimizado
 
 **mysql/mariaDB**: 0.064 + 0.052 + 0.047 + 0.058 + 0.055: AVG = 0.0552s
 
-**postgresql**:
+**postgresql**: 0.092 + 0.093 + 0.106 + 0.104 + 0.082 : AVG = 0.095s
 
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -177,14 +186,15 @@ Existem 3 full table scans nas tabelas REGION, PART os da tabela REGION podem se
 
 ![3](https://user-images.githubusercontent.com/15125899/185261078-6e72ec75-cbe9-4e6d-8451-52c490b1e1b4.png)
 
-
 ### Postgresql Explain Graph não Optimizado
+
+Não foi possível otimizar mais, pois as consultas iniciais já reduzem bastante o número de tuplas. Assim, a otimização proposta no MySQL não se aplica ao PostgreSQL, pois a filtragem por tamanho e material da peça só é feita ao final, depois que as tabelas passam por vários hash joins. A essa altura, não é possível aproveitar o índice composto de material e tamanho - em vez disso, o Postgres usa o índice de chave primária para encontrar quais valores resultantes dos hash joins anteriores atendem aos critérios definidos.
 
 ### Tempo Médio Optimizado
 
 **mysql/mariaDB**:  0.028 +  0.029 +  0.029 +  0.021 +  0.031: AVG = 0.0276s
 
-**postgresql**:
+**postgresql**: N/A
 
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -249,11 +259,15 @@ Uma possível optimização poderia ser um índice com a tabela `LINEITEM` porem
 
 ### Postgresql Explain Graph não Optimizado
 
+Já no Postgres, aconteceu o contrário: ao criar um índice simples em um dos atributos, o Postgres acaba preferindo utilizar primeiro o índice para filtrar os itens, e depois efetuar a busca sequencial nos itens restantes. Como vários atributos estão sendo filtrados ao mesmo tempo, exploramos a criação de índices simples e compostos em diferentes atributos, e os resultados foram esses: (slide)
+
+Ao criar o índice composto com L_SHIPMODE como o primeiro item, pode-se evitar muitas buscas, pois ao encontrar o valor de L_SHIPMODE desejado, encontra-se todas as demais entradas com esse valor.
+
 ### Tempo Médio Optimizado
 
 **mysql/mariaDB**: Não Aplicável
 
-**postgresql**:
+**postgresql**: 0.142 + 0.158 + 0.151 + 0.138 + 0.147 = 0.147s
 
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -308,14 +322,18 @@ Substituições:
 
 Essa uma consulta bem rápida com um custo baixo
 
+Como são muitas junções, por mais que se reduza a quantidade de tuplas intermediárias ao máximo, a junção final sempre irá demorar um pouco mais.
+
+O índice só pode ser utilizado na primeira filtragem. Como a primeira operação realizada é a filtragem por REGION (país), que tem pouco menos de 30 linhas, não compensa criar um índice para um número tão pequeno de valores.
+
 ### Postgresql Explain Graph não Optimizado
 
 
 ### Tempo Médio Optimizado
 
-**mysql/mariaDB**:
+**mysql/mariaDB**: N/A
 
-**postgresql**:
+**postgresql**: N/A
 
 
 ------------------------------------------------------------------------------------------------------------------------
