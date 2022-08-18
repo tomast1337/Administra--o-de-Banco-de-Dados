@@ -87,7 +87,7 @@ WHERE L_PARTKEY = P_PARTKEY
 
 ### Tempo Médio não Optimizado
 
-**mysql/mariaDB**: 1.193 + 1.103 + 1.074 + 1.202 + 1.129: AVG = 1.1402s
+**mysql/mariaDB**: 0.173 + 0.152 + 0.164 + 0.175 + 0.135: AVG = 0.1598s
 
 **postgresql**: 0.103 + 0.091 + 0.155 + 0.145 + 0.171: AVG = 0.133s
 
