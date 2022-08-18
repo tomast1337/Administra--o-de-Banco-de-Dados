@@ -55,6 +55,15 @@ Criando o index `CREATE INDEX O_ORDERDATE_Index ON ORDERS (O_ORDERDATE);` a cons
 
 ## Postgresql Explain Graph não Optimizado
 
+### Tempo Médio Optimizado
+
+**mysql/mariaDB**:
+
+**postgresql**:
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
 ## 2ª
 
 ```sql
@@ -91,6 +100,15 @@ Existem um full table scan em LINEITEM para buscar as datas na condição, entã
 ![2](https://user-images.githubusercontent.com/15125899/185259444-eb1a7997-871b-49e5-8d37-2d866445b7da.png)
 
 ## Postgresql Explain Graph não Optimizado
+
+### Tempo Médio Optimizado
+
+**mysql/mariaDB**:
+
+**postgresql**:
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## 3ª
 
@@ -155,12 +173,21 @@ Substituições:
 
 ![3](https://user-images.githubusercontent.com/15125899/185228026-aeaba3e6-963e-4481-91e0-a1a9b9287d16.png)
 
-Existem 3 full table scans nas tabelas REGION, PART os da tabela REGION podem ser ignorados poque é uma tabela so com 5 linhas, em PART nos estaõs usando como condicional para a seleção as colunas não primarias P_TYPE e P_SIZE, podemos criar um idice composto com as duas da sequinte foma para melhoramos essa parte das busca, da seguinte foma, `CREATE INDEX P_TYPE_x_P_SIZE ON PART (P_SIZE,P_TYPE);`:
+Existem 3 full table scans nas tabelas REGION, PART os da tabela REGION podem ser ignorados poque é uma tabela so com 5 linhas, em PART nos estão usando como condicional para a seleção as colunas não primarias P_TYPE e P_SIZE, podemos criar um índice composto com as duas da seguinte foma para melhoramos essa parte das busca, da seguinte foma, `CREATE INDEX P_TYPE_x_P_SIZE ON PART (P_SIZE,P_TYPE);` a consulta utilizando o índice fica da seguinte forma:
 
 ![3](https://user-images.githubusercontent.com/15125899/185261078-6e72ec75-cbe9-4e6d-8451-52c490b1e1b4.png)
 
 
 ## Postgresql Explain Graph não Optimizado
+
+### Tempo Médio Optimizado
+
+**mysql/mariaDB**:
+
+**postgresql**:
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## 4ª
 
@@ -218,9 +245,18 @@ Substituições:
 
 ![4](https://user-images.githubusercontent.com/15125899/185228041-dc6842f2-e242-4d0c-8f99-48ef8a17f377.png)
 
-Uma possivel optimização poderia ser um idice com a tabela `LINEITEM` porem teri que ser um item composto com tantas colunas que seria a mesma coisa que ler a tabela.
+Uma possível optimização poderia ser um índice com a tabela `LINEITEM` porem teria que ser um item composto com tantas colunas que seria a mesma coisa que ler a tabela. isso foi experimentado e o mysql sempre tentar fazer toda seleção ao mesmo tempo ignorando a existência do índice. Tentamos reescrever a consulta separando um uma consulta menor que poderia ser utiliza o índice, porem ao colocar as outras condições relacionas a busca dentro de `LINEITEM` o my sql sempre prefere executar todas as condicionais por toda tabela. 
 
 ## Postgresql Explain Graph não Optimizado
+
+### Tempo Médio Optimizado
+
+**mysql/mariaDB**:
+
+**postgresql**:
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## 5ª
 
@@ -271,3 +307,13 @@ Substituições:
 ![5](https://user-images.githubusercontent.com/15125899/185228055-086350f2-82de-45d7-b2be-0e048ebb560d.png)
 
 ## Postgresql Explain Graph não Optimizado
+
+
+### Tempo Médio Optimizado
+
+**mysql/mariaDB**:
+
+**postgresql**:
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
